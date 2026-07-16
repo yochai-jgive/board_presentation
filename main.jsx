@@ -123,7 +123,7 @@ function PredLineChart({title,subtitle,data,observed,predicted,vf,noteText,yDoma
             <YAxis tick={{fill:C.introCategory,fontSize:12}} {...yAxisProps}
               tickFormatter={v=>typeof v==="number"&&v>=1000?(v/1000)+"K":v}/>
             <Line type="monotone" dataKey="main" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary,stroke:"white",strokeWidth:2}}>
-              <LabelList dataKey="main" position="top" style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={fmt}/></Line>
+              <LabelList dataKey="main" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={fmt}/></Line>
             <Line type="monotone" dataKey="predLine" stroke={C.brown} strokeWidth={2} strokeDasharray="8 4" dot={p=>PredDot(p,C.brown,"predLine")}/>
             <Line type="monotone" dataKey="obs" stroke="transparent" strokeWidth={0} dot={p=>PredDot(p,C.darkPurple,"obs")}/>
           </ComposedChart>
@@ -170,7 +170,7 @@ function GrowthLine({data,noteText,yDomain,yTicks,vf,growthOverride}) {
               if(!gr)return null;
               return <text x={x} y={y-28} textAnchor="middle" fill={C.green} fontSize={12} fontWeight={700}>{gr}</text>;
             }}>
-            <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={fmt}/>
+            <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={fmt}/>
           </Line>
         </LineChart>
       </ResponsiveContainer>
@@ -186,7 +186,7 @@ function SimpleLine({title,data,footnote,vf}) {
         <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/>
         <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/><YAxis tick={{fill:C.introCategory,fontSize:14}}/>
         <Line type="monotone" dataKey="value" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary}}>
-          <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:14,fontWeight:600}} formatter={fmt}/></Line>
+          <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:14,fontWeight:600}} formatter={fmt}/></Line>
       </LineChart></ResponsiveContainer></div></div></SL>;
 }
 
@@ -206,7 +206,7 @@ function DualPred({tL,dL,oL,pL,tR,dR,oR,pR,topText,footnote,yTicksL,yTicksR,exL,
             <XAxis dataKey="year" tick={{fontSize:13}}/>
             <YAxis tick={{fontSize:13}} {...yAxisProps}/>
             <Line type="monotone" dataKey="main" stroke={C.primary} strokeWidth={2} dot={{r:4,fill:C.primary}}>
-              <LabelList dataKey="main" position="top" style={{fill:C.fg,fontSize:12,fontWeight:600}}/></Line>
+              <LabelList dataKey="main" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12,fontWeight:600}}/></Line>
             <Line type="monotone" dataKey="predLine" stroke={C.brown} strokeWidth={2} strokeDasharray="8 4" dot={p=>PredDot(p,C.brown,"predLine")}/>
             <Line type="monotone" dataKey="obs" stroke="transparent" strokeWidth={0} dot={p=>PredDot(p,C.darkPurple,"obs")}/>
           </ComposedChart>
@@ -234,7 +234,7 @@ function DualSimple({tL,dL,tR,dR}) {
       <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/>
       <XAxis dataKey="year" tick={{fontSize:13}}/><YAxis tick={{fontSize:13}}/>
       <Line type="monotone" dataKey="value" stroke={C.primary} strokeWidth={2} dot={{r:4,fill:C.primary}}>
-        <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:12,fontWeight:600}}/></Line>
+        <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12,fontWeight:600}}/></Line>
     </LineChart></ResponsiveContainer></div></div>;
   return <SL><div style={{padding:"60px 60px 50px",display:"flex",flexDirection:"column",height:"100%"}}>
     <Pill style={{marginBottom:16}}>In-depth analysis: DAF</Pill>
@@ -316,9 +316,9 @@ export default function App() {
             ticks={rightYTicks} domain={[0, 350]}/>
           <YAxis yAxisId="right" orientation="right" tick={{fill:C.muted,fontSize:14}} tickFormatter={v=>v+"%"} domain={[0,9]}/>
           <Bar yAxisId="left" dataKey="d" fill={C.primary} radius={[6,6,0,0]} barSize={54}>
-            <LabelList dataKey="d" position="inside" style={{fill:"white",fontSize:14,fontWeight:700}} formatter={v=>v>0?v+"K":""}/></Bar>
+            <LabelList dataKey="d" position="inside" fill={"white"} style={{fill:"white",fontSize:14,fontWeight:700}} formatter={v=>v>0?v+"K":""}/></Bar>
           <Line yAxisId="right" type="monotone" dataKey="p" stroke={C.fg} strokeWidth={2} dot={{r:5,fill:C.fg}}>
-            <LabelList dataKey="p" position="top" style={{fill:C.fg,fontSize:14,fontWeight:700}} formatter={v=>v!=null?v+"%":""}/></Line>
+            <LabelList dataKey="p" position="top" fill={C.fg} style={{fill:C.fg,fontSize:14,fontWeight:700}} formatter={v=>v!=null?v+"%":""}/></Line>
         </ComposedChart></ResponsiveContainer></div>
       </div></SL>;}
 
@@ -331,7 +331,7 @@ export default function App() {
           <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/>
           <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/><YAxis tick={{fill:C.introCategory,fontSize:14}} tickFormatter={v=>v+"%"} domain={[0.5,1.5]}/>
           <Line type="monotone" dataKey="value" stroke={C.primary} strokeWidth={3} dot={{r:6,fill:C.primary,stroke:"white",strokeWidth:2}}>
-            <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:16,fontWeight:700}} formatter={v=>v+"%"}/></Line>
+            <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:16,fontWeight:700}} formatter={v=>v+"%"}/></Line>
         </LineChart></ResponsiveContainer></div>
         <div style={{marginTop:20,background:"linear-gradient(135deg,"+C.darkPurple+",hsl(288,80%,45%))",borderRadius:14,padding:"18px 28px",color:"white",fontSize:19,fontWeight:700,lineHeight:1.5}}>
           In 2023, Jgive accounted for 10% of donations from big donors (50K+) in Israel
@@ -426,9 +426,9 @@ export default function App() {
         <div style={{flex:1}}><ResponsiveContainer width="100%" height="100%"><BarChart data={growthBySources} margin={{top:20,right:30,bottom:20,left:10}}>
           <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/>
           <XAxis dataKey="source" tick={{fill:C.introCategory,fontSize:13}}/><YAxis domain={[0,200]} tick={{fill:C.introCategory,fontSize:13}}/>
-          <Bar dataKey="y1" name="Jan-Jun 2024" fill={C.beigeLight} radius={[4,4,0,0]}><LabelList dataKey="y1" position="top" style={{fill:C.fg,fontSize:12}}/></Bar>
-          <Bar dataKey="y2" name="Jan-Jun 2025" fill={C.beigeDark} radius={[4,4,0,0]}><LabelList dataKey="y2" position="top" style={{fill:C.fg,fontSize:12}}/></Bar>
-          <Bar dataKey="y3" name="Jan-Jun 2026" fill={C.primary} radius={[4,4,0,0]}><LabelList dataKey="y3" position="top" style={{fill:C.fg,fontSize:12}}/></Bar>
+          <Bar dataKey="y1" name="Jan-Jun 2024" fill={C.beigeLight} radius={[4,4,0,0]}><LabelList dataKey="y1" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12}}/></Bar>
+          <Bar dataKey="y2" name="Jan-Jun 2025" fill={C.beigeDark} radius={[4,4,0,0]}><LabelList dataKey="y2" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12}}/></Bar>
+          <Bar dataKey="y3" name="Jan-Jun 2026" fill={C.primary} radius={[4,4,0,0]}><LabelList dataKey="y3" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12}}/></Bar>
           <Legend wrapperStyle={{fontSize:14,fontWeight:600}}/></BarChart></ResponsiveContainer></div>
       </div></div></SL>;
 
@@ -448,7 +448,7 @@ export default function App() {
               <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/>
               <YAxis tick={{fill:C.introCategory,fontSize:14}} tickFormatter={v=>v>=1000?(v/1000)+"K":v} domain={[0,600000]}/>
               <Line type="monotone" dataKey="main" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary,stroke:"white",strokeWidth:2}}>
-                <LabelList dataKey="main" position="top" style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/></Line>
+                <LabelList dataKey="main" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/></Line>
               <Line type="monotone" dataKey="predLine" stroke={C.brown} strokeWidth={2} strokeDasharray="8 4" dot={p=>PredDot(p,C.brown,"predLine")}/>
               <Line type="monotone" dataKey="obs" stroke="transparent" strokeWidth={0} dot={p=>PredDot(p,C.darkPurple,"obs")}/>
             </ComposedChart>
@@ -476,7 +476,7 @@ export default function App() {
               <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/>
               <YAxis tick={{fill:C.introCategory,fontSize:14}} tickFormatter={v=>v>=1000?(v/1000)+"K":v} domain={[0,400000]}/>
               <Line type="monotone" dataKey="main" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary,stroke:"white",strokeWidth:2}}>
-                <LabelList dataKey="main" position="top" style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/></Line>
+                <LabelList dataKey="main" position="top" fill={C.fg} style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/></Line>
               <Line type="monotone" dataKey="predLine" stroke={C.brown} strokeWidth={2} strokeDasharray="8 4" dot={p=>PredDot(p,C.brown,"predLine")}/>
               <Line type="monotone" dataKey="obs" stroke="transparent" strokeWidth={0} dot={p=>PredDot(p,C.darkPurple,"obs")}/>
             </ComposedChart>
@@ -577,13 +577,13 @@ export default function App() {
             <h3 style={{fontSize:20,fontWeight:700,marginBottom:10}}>New vs. Existing Platinum Clients by Year</h3>
             <div style={{flex:1}}><ResponsiveContainer width="100%" height="100%"><BarChart data={pD} margin={{top:36,right:10,bottom:10,left:10}}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/><XAxis dataKey="year" tick={{fontSize:14}}/><YAxis tick={{fontSize:14}}/>
-              <Bar dataKey="existing" name="Existing Clients" stackId="a" fill={C.beigeDark}><LabelList dataKey="existing" position="inside" style={{fill:"white",fontSize:12,fontWeight:600}}/></Bar>
+              <Bar dataKey="existing" name="Existing Clients" stackId="a" fill={C.beigeDark}><LabelList dataKey="existing" position="inside" fill={"white"} style={{fill:"white",fontSize:12,fontWeight:600}}/></Bar>
               <Bar dataKey="newC" name="New Clients" stackId="a" fill={C.primary} radius={[0,0,0,0]}>
-                <LabelList dataKey="newC" position="inside" style={{fill:"white",fontSize:12,fontWeight:600}}/>
+                <LabelList dataKey="newC" position="inside" fill={"white"} style={{fill:"white",fontSize:12,fontWeight:600}}/>
               </Bar>
               <Bar dataKey="predNew" name="Predicted New" stackId="a" fill="hsla(288,100%,67%,0.25)" radius={[4,4,0,0]}
                 label={<TotalLabel/>}>
-                <LabelList dataKey="predNew" position="inside" style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={v=>v>0?v+"(Pred.)":""}/>
+                <LabelList dataKey="predNew" position="inside" fill={C.fg} style={{fill:C.fg,fontSize:12,fontWeight:600}} formatter={v=>v>0?v+"(Pred.)":""}/>
               </Bar>
               <Legend wrapperStyle={{fontSize:13,fontWeight:700}}/>
             </BarChart></ResponsiveContainer></div>
@@ -592,7 +592,7 @@ export default function App() {
             <h3 style={{fontSize:20,fontWeight:700,marginBottom:10}}>Stock Donations in Million NIS by Year</h3>
             <div style={{flex:1,display:"flex"}}><div style={{flex:1}}><ResponsiveContainer width="100%" height="100%"><ComposedChart data={sD} margin={{top:20,right:20,bottom:10,left:10}}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/><XAxis dataKey="year" tick={{fontSize:14}}/><YAxis tick={{fontSize:14}}/>
-              <Line type="monotone" dataKey="main" stroke={C.primary} strokeWidth={2} dot={{r:5,fill:C.primary}} connectNulls={false}><LabelList dataKey="main" position="top" style={{fill:C.fg,fontSize:14,fontWeight:600}}/></Line>
+              <Line type="monotone" dataKey="main" stroke={C.primary} strokeWidth={2} dot={{r:5,fill:C.primary}} connectNulls={false}><LabelList dataKey="main" position="top" fill={C.fg} style={{fill:C.fg,fontSize:14,fontWeight:600}}/></Line>
               <Line type="monotone" dataKey="predLine" stroke={C.brown} strokeWidth={2} strokeDasharray="8 4" dot={p=>PredDot(p,C.brown,"predLine")}/>
               <Line type="monotone" dataKey="obs" stroke="transparent" strokeWidth={0} dot={p=>PredDot(p,C.darkPurple,"obs")}/>
             </ComposedChart></ResponsiveContainer></div>
@@ -666,7 +666,7 @@ export default function App() {
           <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/>
           <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/><YAxis tick={{fill:C.introCategory,fontSize:14}}/>
           <Line type="monotone" dataKey="value" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary}}>
-            <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:14,fontWeight:600}}/></Line>
+            <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:14,fontWeight:600}}/></Line>
         </LineChart></ResponsiveContainer></div></div></SL>;
     case "history-grants": return <SL footnote="Including Grants, without Deposits"><div style={{padding:"80px 80px 60px",height:"100%",display:"flex",flexDirection:"column"}}>
         <Pill>Jgive Throughout the Years</Pill>
@@ -675,7 +675,7 @@ export default function App() {
           <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/>
           <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/><YAxis tick={{fill:C.introCategory,fontSize:14}}/>
           <Line type="monotone" dataKey="value" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary}}>
-            <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:14,fontWeight:600}}/></Line>
+            <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:14,fontWeight:600}}/></Line>
         </LineChart></ResponsiveContainer></div></div></SL>;
 
     // ── 18. NUM DONATIONS JAN-MAY ──
@@ -689,7 +689,7 @@ export default function App() {
             <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/>
             <YAxis tick={{fill:C.introCategory,fontSize:14}} tickFormatter={v=>v>=1000?(v/1000)+"K":v}/>
             <Line type="monotone" dataKey="value" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary}}>
-              <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:13,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/>
+              <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:13,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/>
             </Line>
           </LineChart>
         </ResponsiveContainer></div>
@@ -706,7 +706,7 @@ export default function App() {
             <XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:16}}/>
             <YAxis tick={{fill:C.introCategory,fontSize:14}} tickFormatter={v=>v>=1000?(v/1000)+"K":v}/>
             <Line type="monotone" dataKey="value" stroke={C.primary} strokeWidth={3} dot={{r:5,fill:C.primary}}>
-              <LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:13,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/>
+              <LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:13,fontWeight:600}} formatter={v=>v?v.toLocaleString():""}/>
             </Line>
           </LineChart>
         </ResponsiveContainer></div>
@@ -716,7 +716,7 @@ export default function App() {
     case "charities-janmay": return <SL><div style={{padding:"80px 80px 60px",height:"100%",display:"flex",flexDirection:"column"}}><Pill>Number of Active Charities Jan-May by Year</Pill>
       <div style={{flex:1}}><ResponsiveContainer width="100%" height="100%"><BarChart data={[{year:"2024",value:1802},{year:"2025",value:2197},{year:"2026",value:2675}]} margin={{top:30,right:60,bottom:20,left:20}}>
         <CartesianGrid strokeDasharray="3 3" stroke="hsla(33,20%,70%,0.3)" vertical={false}/><XAxis dataKey="year" tick={{fill:C.introCategory,fontSize:20}}/><YAxis tick={{fill:C.introCategory,fontSize:14}}/>
-        <Bar dataKey="value" fill={C.primary} radius={[8,8,0,0]} barSize={120}><LabelList dataKey="value" position="top" style={{fill:C.fg,fontSize:22,fontWeight:700}} formatter={v=>v.toLocaleString()}/></Bar>
+        <Bar dataKey="value" fill={C.primary} radius={[8,8,0,0]} barSize={120}><LabelList dataKey="value" position="top" fill={C.fg} style={{fill:C.fg,fontSize:22,fontWeight:700}} formatter={v=>v.toLocaleString()}/></Bar>
       </BarChart></ResponsiveContainer></div></div></SL>;
 
     // ── 21. DAF JAN-MAY ──
